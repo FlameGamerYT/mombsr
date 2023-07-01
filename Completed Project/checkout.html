@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="js/cookiemanager.js" ></script>
+  <script src="js/validation.js"></script>
+  <script src="js/catalog.js" ></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1" />
+  <title>Mombar</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/confetti_cuisine.css" />
+
+    <script>
+         let cart=new ShoppingCart(getCookie('whoami'));;
+         cart.emptyShoppingCart();
+    </script>
+    <script>
+      function loadsolopage(x)
+      {
+     setCookie("page",x,1);
+     window.location.href = "solopage.html";
+      }
+     </script>
+    </head>
+<body>
+    <div id="nav" style="background-image:url('images/mombar.webp');color:white;">
+        <div class="col-sm nav-align">
+          <h1 id="title">Mombar</h1>
+        </div>
+        <div class="col-sm nav-align">
+          
+          <script src="js/menu.js"></script>
+    
+        </div>
+      </div>
+    <center>
+    <label>Thank you for ordering with us! Please come pick up your order soon!</label><br>
+    <a href="menu.html" >Make a new order</a>
+    </center>
+</body>
+</html>

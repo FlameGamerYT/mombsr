@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="js/cookiemanager.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/catalog.js"></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1" />
+  <title>Mombar</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/confetti_cuisine.css" />
+  <style>
+    #content {
+      text-align: left;
+      width: 550px;
+      padding: 0;
+    }
+  </style>
+
+  <script>
+    function addItem2Cart(x) {
+      let cart = new ShoppingCart(getCookie('whoami'));
+      cart.addItem(x.id);
+      alert(x.name + ' Added To Cart ...');
+    }
+  </script>
+</head>
+
+<body>
+  <div id="nav" style="background-image:url('images/mombar.webp');color:white;">
+    <div class="col-sm nav-align">
+      <h1 id="title">Mombar</h1>
+    </div>
+    <div class="col-sm nav-align">
+      <script src="js/menu.js"></script>
+    </div>
+  </div>
+  <center>
+    <div id="content">
+      <script>
+        let x = new Catalog();
+        let items = x.getProducts();
+        for (var i = 0; i < items.length; i++) {
+          var code = getCookie("page");
+
+          if (code == items[i].code) {
+            var code = items[i].code;
+            var name = items[i].name;
+            var image = items[i].image;
+            var description = items[i].description;
+            document.writeln(
+              `
+                    <center>
+                    <img src="images/${image}" style="width:400px" alt="${name}" />
+                    </center>
+                    <h2>${name}</h2><p>
+                    ${description}<br />
+                    <span style="float:right;text-align:left;padding:.5em;">
+                    <a href="menu.html">Goto Menu</a>&nbsp;&nbsp;
+                    <a href="#" onclick="addItem2Cart(this);" id="${code}" name="${name}"> Add to Cart</a>&nbsp;&nbsp;
+                    <a href="cart.html">Goto Cart</a>
+                    </span></p>
+                    `);
+            break;
+          }
+        }
+      </script>
+    </div>
+  </center>
+</body>
+
+</html>
